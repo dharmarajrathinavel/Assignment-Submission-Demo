@@ -1,0 +1,2 @@
+program 1 => Time completity : O(n^2)
+program 2 => Time completity : O(3^n)*0(n)
