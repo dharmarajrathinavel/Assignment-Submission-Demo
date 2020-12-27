@@ -1,0 +1,26 @@
+public class assignment2a
+{
+	public static int array[] = {5,10,15,20,25,30},array_length = array.length;
+	public static void main(String args[])
+	{
+		System.out.print("Original Array : ");DisplayArray();
+		DeleteFirstElementInArray();
+		System.out.print("Array after deleting first element : ");DisplayArray();
+	}
+	public static void DeleteFirstElementInArray()
+	{
+		for(int i=0;i<array_length-1;i++)
+		{
+			array[i] = array[i+1];
+		}
+		array_length = array_length-1;
+	}
+	public static void DisplayArray()
+	{
+		for(int i=0;i<array_length;i++)
+		{
+			System.out.print(array[i]+" ");
+		}
+		System.out.println();
+	}
+}

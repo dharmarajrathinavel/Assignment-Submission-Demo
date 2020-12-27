@@ -1,0 +1,35 @@
+import java.util.Scanner;
+
+public class assignment2b
+{
+public static int array[] = {10,20,30,40,50,60},array_length = array.length;
+public static void main(String args[])
+{
+System.out.print("Original Array : ");DisplayArray();
+Scanner input = new Scanner(System.in);
+System.out.print("Number of shifts towards LEFT = ");
+int rotate = input.nextInt();
+for(int i=1;i<=rotate;i++)
+{
+	ShiftOneStepLEFT();
+	System.out.print("Shift "+i+" : ");DisplayArray();
+}
+}
+public static void ShiftOneStepLEFT()
+{
+for(int i=1;i<array_length;i++)
+{
+int temp = array[i];
+array[i]=array[i-1];
+array[i-1]=temp;
+}
+}
+public static void DisplayArray()
+{
+for(int i=0;i<array_length;i++)
+{
+System.out.print(array[i]+" ");
+}
+System.out.println();
+}
+}
