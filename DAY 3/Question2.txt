@@ -1,0 +1,65 @@
+public class Question2 {
+	public static void main(String args[])
+	{
+		Linked_list ll = new Linked_list();
+		ll.InsertElements(10);ll.InsertElements(20);ll.InsertElements(30);ll.InsertElements(40);
+		System.out.print("Linked List : ");ll.DisplayLinkedList();
+		ll.delete_beg();
+		System.out.print("Linked List : ");ll.DisplayLinkedList();
+	}
+}
+class Node
+{
+	int value;
+	Node next;
+}
+class Linked_list
+{
+	private Node head;
+	public Linked_list()
+	{
+		head = new Node();
+		head.value=0;
+		head.next=null;
+	}
+	public boolean delete_beg()
+	{
+		Node temp = new Node();
+		temp=head;
+		if(temp.next!=null) {head = temp.next;return true;}
+		else {head=null;return true;}
+	}
+	public boolean InsertElements(int val)
+	{
+		if(head.value==0)
+		{
+			head.value=val;head.next=null;return true;
+		}
+		else
+		{
+			Node temp = new Node();
+			temp = head;
+			while(temp.next!=null)
+			{
+				temp = temp.next;
+			}
+			Node n = new Node();
+			n.value=val;n.next=null;
+			temp.next=n;
+		}
+		return false;
+	}
+	public void DisplayLinkedList()
+	{
+		Node temp = new Node();
+		temp = head;
+		if(temp!=null)
+		{
+			while(temp.next!=null)
+			{
+				System.out.print(temp.value+"->");temp = temp.next;
+			}
+			System.out.println(temp.value);
+		}
+	}
+}

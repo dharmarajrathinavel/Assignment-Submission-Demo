@@ -1,0 +1,97 @@
+import java.util.Scanner;
+
+public class Question1 {
+	public static void main(String args[])
+	{
+		Linked_List ll = new Linked_List();
+		ll.InsertElements(10);ll.InsertElements(20);ll.InsertElements(30);ll.InsertElements(40);
+		System.out.print("Linked List : ");ll.DisplayLinkedList();
+		Scanner input = new Scanner(System.in);
+		System.out.print("Element to Insert : ");
+		int val = input.nextInt();
+		System.out.print("Position where the element '"+val+"' have to insert : ");
+		int pos = input.nextInt();
+		ll.insert_any(pos,val);
+	}
+}
+class Node
+{
+	int value;
+	Node next;
+}
+class Linked_List
+{
+	private Node head;
+	public Linked_List()
+	{
+		head = new Node();
+		head.value=0;
+		head.next=null;
+	}
+	public boolean InsertElements(int val)
+	{
+		if(head.value==0)
+		{
+			head.value=val;head.next=null;return true;
+		}
+		else
+		{
+			Node temp = new Node();
+			temp = head;
+			while(temp.next!=null)
+			{
+				temp = temp.next;
+			}
+			Node n = new Node();
+			n.value=val;n.next=null;
+			temp.next=n;
+		}
+		return false;
+	}
+	public boolean insert_any(int position,int item)
+	{
+		int index=1;
+		Node temp = new Node();
+		temp = head;
+		while(temp.next!=null)
+		{
+			if(position==0)
+			{
+				Node n = new Node();
+				n.value = item;n.next=head;head=n;System.out.print("Linked List : ");DisplayLinkedList();return true;
+			}
+			if(index==position)
+			{
+				Node n = new Node();
+				n.value = item;
+				n.next = temp.next;temp.next = n;
+				System.out.print("Linked List : ");DisplayLinkedList();
+				return true;
+			}
+			else
+			{
+				index++;temp = temp.next;
+			}
+		}
+		if(index==position)
+		{
+			Node n = new Node();
+			n.value = item;
+			n.next = temp.next;temp.next = n;
+			System.out.print("Linked List : ");DisplayLinkedList();
+			return true;
+		}
+		System.out.println("Oops! Linked list contains only "+(index)+" elements.So,the element "+item+" cannot be inserted at position "+position+".");
+		return false;
+	}
+	public void DisplayLinkedList()
+	{
+		Node temp = new Node();
+		temp = head;
+		while(temp.next!=null)
+		{
+			System.out.print(temp.value+"->");temp = temp.next;
+		}
+		System.out.println(temp.value);
+	}
+}
