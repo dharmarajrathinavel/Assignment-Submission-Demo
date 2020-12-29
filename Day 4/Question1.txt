@@ -1,0 +1,4 @@
+1)  In the Binary Search algorithm, it is suggested to calculate the mid as
+beg + (end - beg) / 2 instead of (beg + end) / 2. Why is it so?
+
+    This is done to avoid overflow that may happen in adding two very big integers where the addition result may become greater than the max integer limit and yield weird results. So we use, beg + (end - beg)/ 2 instead of (beg + end) / 2.
