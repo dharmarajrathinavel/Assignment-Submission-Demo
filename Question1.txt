@@ -1,0 +1,28 @@
+class Question1
+{
+	public static void main(String args[])
+	{
+		int array[] = {9,5,0,2,8};
+		InsertionSort(array);
+	}
+	public static void Insertion_Sort(int array[])
+	{
+		for(int i=1;i<array.length;i++)
+		{
+			int picked_element = array[i];
+			int j = i-1;
+			while((j>=0)&&(array[j]>picked_element))
+			{
+				array[j+1] = array[j];
+				j--;
+			}
+			array[j+1] = picked_element;
+		}
+		System.out.print("Sorted array : { ");
+		for(int i=0;i<array.length;i++)
+		{
+			System.out.print(array[i]+" ");
+		}
+		System.out.println("}");
+	}
+}
