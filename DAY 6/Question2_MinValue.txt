@@ -1,0 +1,62 @@
+import java.util.Scanner;
+public class Question2_MinValue
+{
+	static int size,top=-1;
+	static Scanner input = new Scanner(System.in);
+	public static void main(String args[])
+	{
+		String choice;
+		System.out.print("Size of stack : ");
+		size = input.nextInt();
+		int a[] = new int[size];
+		do
+		{
+			System.out.print("1.PUSH  |  2.POP  |  3.MIN_VALUE |  anyKey=TERMINATE  >> ");
+			choice = input.next();
+			switch(choice)
+			{
+				case "1" : push(a);break;
+				case "2" : pop(a);break;
+				case "3" : min(a);break;
+				default : System.out.println("Exited");
+			}
+		}while(choice.equals("1") ||choice.equals("2") || choice.equals("3"));
+	}
+	public static void push(int a[])
+	{
+		System.out.print("Push element : ");
+		int item = input.nextInt();
+		if(top<size-1)
+		{
+			top++;a[top]=item;
+		}
+		else
+			System.out.println("Oops! Stack Overflow :(");
+	}
+	public static void pop(int a[])
+	{
+		if(top>=0)
+		{
+			top--;
+		}
+		else
+			System.out.println("Oops! Stack Underflow :(");
+	}
+	public static void min(int a[])
+	{
+		if(top>=0)
+		{
+			int min=a[0];
+			for(int i=0;i<top;i++)
+			{
+				if(a[i]>a[i+1])
+				{
+					min = a[i+1];
+				}
+			}
+			System.out.println("Minimum value : "+min);
+		}
+		else
+			System.out.println("Oops! Stack Underflow :(");
+	}
+}
