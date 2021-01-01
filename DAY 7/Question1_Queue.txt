@@ -1,0 +1,78 @@
+import java.util.Scanner;
+public class Question1_Queue
+{
+	static Scanner input = new Scanner(System.in);
+	static int q[],front=-1,rear=-1,size;
+	static String choice;
+	public static void main(String args[])
+	{
+		System.out.print("Size of Queue : ");
+		size = input.nextInt();
+		if(size>0)
+		{
+			q = new int[size];
+			do
+			{
+				System.out.print("1.ENQUEUE | 2.DEQUEUE | 3.DISPLAY | anyKey-EXIT  >> ");
+				choice = input.next();
+				switch(choice)
+				{
+				case "1":enqueue();break;
+				case "2":dequeue();break;
+				case "3":display();break;
+				default:System.out.println("Oops! Invalid choice");break;
+				}
+			}while(choice.equals("1") || choice.equals("2") || choice.equals("3"));
+		}
+		if(size<=0)
+		{
+			System.out.println("Oops! Queue with Size LESS THAN ONE cannot be useful for storing elements.");
+		}
+	}
+
+	public static void enqueue()
+	{
+		System.out.print("Element to Insert into Queue : ");
+		int insert = input.nextInt();
+		if(rear==size-1)
+			System.out.println("Oops! Queue Overflow.");
+		if(rear!=size-1)
+		{
+			front=0;rear++;q[rear]=insert;
+		}
+	}
+
+	public static void dequeue()
+	{
+		if(front==-1 && front==-1)
+		{
+			System.out.println("Oops! Queue Underflow.");
+		}
+		else
+		{
+			for(int i=1;i<=rear;i++)
+			{
+				q[i-1]=q[i];
+			}
+			rear--;
+		}
+	}
+
+	public static boolean display()
+	{
+		if(rear!=-1)
+		{
+			System.out.print("Queue : (Front) ");
+			for(int i = 0;i<=rear;i++)
+			{
+				System.out.print(q[i]+" <- ");
+			}
+			System.out.println("(Rear)");return true;
+		}
+		else
+		{
+			System.out.println("Oops! Queue Underflow.");return false;
+		}
+	}
+
+}
