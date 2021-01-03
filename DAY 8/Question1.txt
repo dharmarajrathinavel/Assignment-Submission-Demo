@@ -1,0 +1,38 @@
+import java.util.Scanner;
+import java.util.ArrayList;
+
+public class Question1
+{
+	static int zeros=0,num=0,prod=1;
+	static String current="";
+	public static void main(String args[])
+	{
+		Scanner input = new Scanner(System.in);
+		ArrayList<String> al = new ArrayList<String>();
+		String str = input.nextLine();
+		for(int i=0;i<str.length();i++)
+		{
+			if(str.charAt(i)=='0')
+			{
+				zeros++;continue;
+			}
+			if(str.charAt(i)==' ')
+			{
+				al.add(current);current="";num++;continue;
+			}
+			if(str.charAt(i)!='0' && str.charAt(i)!=' ')
+			{
+				current = current+str.charAt(i);continue;
+			}
+		}
+		for(int i=0;i<al.size();i++)
+		{
+			prod = prod*Integer.parseInt(al.get(i));
+		}
+		System.out.print(prod);
+		for(int i=0;i<zeros;i++)
+		{
+			System.out.print("0");
+		}
+	}
+}

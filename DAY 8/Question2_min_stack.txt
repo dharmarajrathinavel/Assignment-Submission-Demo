@@ -1,0 +1,77 @@
+import java.util.Scanner;
+public class Question2_min_stack
+{
+	static Scanner input;
+	static int size=0,top=-1,original_stack[],duplicate_stack[],choice=0;
+	public static void main(String args[])
+	{
+		System.out.print("Size of stack : ");
+		input = new Scanner(System.in);
+		size = input.nextInt();
+		original_stack = new int[size];
+		duplicate_stack = new int[size];
+		do
+		{
+			System.out.print("1.PUSH  |  2.POP  |  3.DISPLAY  |  4.MINIMUM-VALUE  |  anyKey-EXIT  >> ");
+			choice=input.nextInt();
+			switch(choice)
+			{
+			case 1:push();break;
+			case 2:pop();break;
+			case 3:display();break;
+			case 4: min();break;
+			default : System.out.println("Exited");
+			}
+		}while(choice>0 && choice<5);
+	}
+
+	public static void push()
+	{
+		System.out.print("Element to Push : ");
+		int item = input.nextInt();
+		if(top!=size-1)
+		{
+			if(top==-1)
+			{
+				top++;duplicate_stack[top] = item;original_stack[top]=item;return;
+			}
+			if(item<duplicate_stack[top])
+			{
+				top++;duplicate_stack[top]=item;original_stack[top]=item;return;
+			}
+			if(item>=duplicate_stack[top])
+			{
+				int prev=top;top++;duplicate_stack[top]=duplicate_stack[prev];original_stack[top]=item;return;
+			}
+		}
+		if(top==size-1){System.out.println("Oops! Stack Overflow");}
+	}
+
+	public static void pop()
+	{
+		if(top>-1)
+		{
+			top--;return;
+		}
+		if(top==-1){System.out.println("Oops! Stack Underflow");}
+	}
+
+	public static void display()
+	{
+		if(top==-1){System.out.println("Oops! Stack Underflow");return;}
+		if(top>-1)
+		{
+			System.out.println("Elements in STACK : ");
+			for(int i=top;i>=0;i--)
+			{
+				System.out.println("| "+original_stack[i]+" |");
+			}
+		}
+	}
+
+	public static void min()
+	{
+		System.out.println("Minimum value = "+duplicate_stack[top]);
+	}
+
+}
